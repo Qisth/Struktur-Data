@@ -1,0 +1,54 @@
+#include <iostream>
+using namespace std;
+
+#define MAX 5
+int stack[MAX];
+int top = -1;
+
+// push
+void push(int value) {
+    if (top == MAX - 1) {
+        cout << "Stack penuh!\n";
+    } else {
+        top++;
+        stack[top] = value;
+        cout << value << " ditambahkan dalam stack\n";
+    }
+}
+
+// pop
+void pop() {
+    if (top == -1) {
+        cout << "Stack kosong!\n";
+    } else {
+        cout << "\n" << stack[top] << " dihapus dari stack\n";
+        top--;
+    }
+}
+
+// nampilin stack
+void display() {
+    if (top == -1) {
+        cout << "Stack kosong!\n";
+    } else {
+        cout << "\nIsi stack: ";
+        for (int i = top; i >= 0; i--) {
+            cout << stack[i] << " ";
+        }
+    }
+}
+
+int main() {
+    for (int i = 0; i < MAX; i++) {
+        push((i + 1) * 10);
+    }
+
+    for (int i = top; i >= 0; i--) {
+        display();
+        pop();
+    }
+
+    display();
+
+    return 0;
+}
